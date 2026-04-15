@@ -1,0 +1,95 @@
+<div class="ts-page-header">
+  <h1 class="ts-page-title">
+    {{#if isEdit}}✏️ Editar Producto{{else}}➕ Nuevo Producto{{/if}}
+  </h1>
+  <a href="/products" class="ts-btn ts-btn-outline" id="backBtn">
+    ← Volver a Productos
+  </a>
+</div>
+
+{{#if errors}}
+<div class="ts-alert ts-alert-danger" id="formErrors">
+  <div>
+    <strong>Por favor corrige los siguientes errores:</strong>
+    <ul class="mb-0 mt-1 ps-3">
+      {{#each errors}}
+      <li>{{this}}</li>
+      {{/each}}
+    </ul>
+  </div>
+</div>
+{{/if}}
+
+
+<div class="ts-form-card">
+  <div class="ts-form-card-body">
+    <form action="{{#if isEdit}}/products/{{product.id}}/update{{else}}/products{{/if}}" method="POST" id="productForm"
+      novalidate>
+
+      <div class="mb-4">
+        <label for="productName" class="form-label">
+          Nombre del Producto <span class="text-danger">*</span>
+        </label>
+        <input type="text" class="form-control" id="productName" name="name" value="{{product.name}}"
+          placeholder="Ej: Laptop Dell Inspiron 15" required>
+      </div>
+
+
+      <div class="ts-form-section mb-4">
+        <div>
+          <label for="productPrice" class="form-label">
+            Precio ($) <span class="text-danger">*</span>
+          </label>
+          <input type="number" class="form-control" id="productPrice" name="price" value="{{product.price}}"
+            placeholder="Ej: 599.99" step="0.01" min="0" required>
+        </div>
+
+        <div>
+          <label for="productQuantity" class="form-label">
+            Cantidad <span class="text-danger">*</span>
+          </label>
+          <input type="number" class="form-control" id="productQuantity" name="quantity" value="{{product.quantity}}"
+            placeholder="Ej: 10" min="0" step="1" required>
+        </div>
+      </div>
+
+
+      <div class="mb-4">
+        <label for="productCategory" class="form-label">
+          Categoría <span class="text-danger">*</span>
+        </label>
+        <select class="form-select" id="productCategory" name="category" required>
+          <option value="">-- Selecciona una categoría --</option>
+          <option value="Laptops" {{#if (eq product.category "Laptops" )}}selected{{/if}}>Laptops</option>
+          <option value="Smartphones" {{#if (eq product.category "Smartphones" )}}selected{{/if}}>Smartphones</option>
+          <option value="Tablets" {{#if (eq product.category "Tablets" )}}selected{{/if}}>Tablets</option>
+          <option value="Monitores" {{#if (eq product.category "Monitores" )}}selected{{/if}}>Monitores</option>
+          <option value="Teclados" {{#if (eq product.category "Teclados" )}}selected{{/if}}>Teclados</option>
+          <option value="Mouse" {{#if (eq product.category "Mouse" )}}selected{{/if}}>Mouse</option>
+          <option value="Auriculares" {{#if (eq product.category "Auriculares" )}}selected{{/if}}>Auriculares</option>
+          <option value="Impresoras" {{#if (eq product.category "Impresoras" )}}selected{{/if}}>Impresoras</option>
+          <option value="Componentes" {{#if (eq product.category "Componentes" )}}selected{{/if}}>Componentes</option>
+          <option value="Accesorios" {{#if (eq product.category "Accesorios" )}}selected{{/if}}>Accesorios</option>
+          <option value="Otro" {{#if (eq product.category "Otro" )}}selected{{/if}}>Otro</option>
+        </select>
+      </div>
+
+
+      <div class="ts-form-actions">
+        {{#if isEdit}}
+        <button type="submit" class="ts-btn ts-btn-warning" id="saveProductBtn">
+          💾 Actualizar Producto
+        </button>
+        {{else}}
+        <button type="submit" class="ts-btn ts-btn-success" id="saveProductBtn">
+          💾 Guardar Producto
+        </button>
+        {{/if}}
+        <a href="/products" class="ts-btn ts-btn-secondary">Cancelar</a>
+      </div>
+
+    </form>
+  </div>
+</div>
+
+<script src="/js/productForm.js"></script>

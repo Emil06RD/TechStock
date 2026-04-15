@@ -1,0 +1,74 @@
+<div class="ts-page-header">
+  <h1 class="ts-page-title">📦 Productos</h1>
+  <a href="/products/new" class="ts-btn ts-btn-success" id="addProductBtn">
+    ➕ Nuevo Producto
+  </a>
+</div>
+
+{{#if successMessage}}
+<div class="ts-alert ts-alert-success" id="successAlert" role="alert">
+  ✅ {{successMessage}}
+</div>
+{{/if}}
+
+
+<div class="ts-table-wrapper">
+  <div class="table-responsive">
+    <table class="table mb-0" id="productTable">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Nombre</th>
+          <th>Precio</th>
+          <th>Cantidad</th>
+          <th>Categoría</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#if products.length}}
+        {{#each products}}
+        <tr id="productRow-{{this.id}}">
+          <td style="color: var(--ts-text-muted); font-size:.82rem;">{{this.id}}</td>
+          <td class="product-name fw-500">{{this.name}}</td>
+          <td class="product-price"><strong>${{this.price}}</strong></td>
+          <td class="product-quantity">{{this.quantity}} uds.</td>
+          <td class="product-category">
+            <span class="ts-badge">{{this.category}}</span>
+          </td>
+          <td>
+            <div class="d-flex gap-2 align-items-center">
+              <a href="/products/{{this.id}}/edit" class="ts-btn ts-btn-warning ts-btn-sm editBtn" data-id="{{this.id}}"
+                id="editBtn-{{this.id}}">
+                ✏️ Editar
+              </a>
+              <form action="/products/{{this.id}}/delete" method="POST" class="d-inline" id="deleteForm-{{this.id}}"
+                onsubmit="return confirm('¿Estás seguro de que deseas eliminar este producto?');">
+                <button type="submit" class="ts-btn ts-btn-danger ts-btn-sm deleteBtn" data-id="{{this.id}}"
+                  id="deleteBtn-{{this.id}}">
+                  🗑️ Eliminar
+                </button>
+              </form>
+            </div>
+          </td>
+        </tr>
+        {{/each}}
+        {{else}}
+        <tr>
+          <td colspan="6" class="p-0">
+            <div class="ts-empty-state" id="emptyMessage">
+              <span class="ts-empty-state-icon">📭</span>
+              <p>No hay productos registrados todavía.</p>
+              <a href="/products/new" class="ts-btn ts-btn-success">➕ Agregar primer producto</a>
+            </div>
+          </td>
+        </tr>
+        {{/if}}
+      </tbody>
+    </table>
+  </div>
+
+  <div class="ts-table-footer">
+    Total de productos: <strong id="productCount">{{products.length}}</strong>
+  </div>
+</div>

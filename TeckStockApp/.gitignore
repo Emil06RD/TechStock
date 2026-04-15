@@ -1,0 +1,12 @@
+node_modules/
+.env
+techstock.db
+reports/
+screenshots/
+__pycache__/
+*.pyc
+*.pyo
+.DS_Store
+Thumbs.db
+npm-debug.log*
+*.log

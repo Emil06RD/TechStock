@@ -1,0 +1,65 @@
+<div class="ts-welcome">
+  <div class="ts-welcome-icon">📊</div>
+  <div>
+    <h1 class="ts-welcome-title">Panel de Control</h1>
+    <p class="ts-welcome-subtitle">
+      Bienvenido de vuelta, <strong>{{user.username}}</strong>.
+      Gestiona tu inventario tecnológico desde aquí.
+    </p>
+  </div>
+</div>
+
+<div class="row g-4">
+
+  <div class="col-md-4">
+    <div class="ts-card">
+      <div class="ts-card-body">
+        <div>
+          <div class="ts-card-icon mb-2">📦</div>
+          <h2 class="ts-card-title">Inventario</h2>
+          <p class="ts-card-text mt-2">
+            Consulta, filtra y administra todos los productos registrados en el sistema.
+          </p>
+        </div>
+        <a href="/products" class="ts-btn ts-btn-primary w-100 justify-content-center mt-3" id="goToProductsBtn">
+          Ver Productos
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-4">
+    <div class="ts-card">
+      <div class="ts-card-body">
+        <div>
+          <div class="ts-card-icon mb-2">➕</div>
+          <h2 class="ts-card-title">Nuevo Producto</h2>
+          <p class="ts-card-text mt-2">
+            Agrega un nuevo artículo al inventario completando el formulario de registro.
+          </p>
+        </div>
+        <a href="/products/new" class="ts-btn ts-btn-success w-100 justify-content-center mt-3" id="addProductBtn">
+          Agregar Producto
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-4">
+    <div class="ts-card">
+      <div class="ts-card-body">
+        <div>
+          <div class="ts-card-icon mb-2">🚪</div>
+          <h2 class="ts-card-title">Cerrar Sesión</h2>
+          <p class="ts-card-text mt-2">
+            Finaliza tu sesión actual y regresa a la pantalla de inicio de sesión.
+          </p>
+        </div>
+        <a href="/logout" class="ts-btn ts-btn-danger w-100 justify-content-center mt-3" id="dashboardLogoutBtn">
+          Cerrar Sesión
+        </a>
+      </div>
+    </div>
+  </div>
+
+</div>
